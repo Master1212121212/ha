@@ -56,6 +56,7 @@
         </form>
     </div>
     <script>
+        // Handle login
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
             let email = document.getElementById('email').value;
@@ -63,7 +64,8 @@
             
             if (email === "admin@gmail.com" && password === "12343q847238957njkxcsb,v") {
                 alert("Login Successful!");
-                window.location.href = "hacktonypanle.html";
+                localStorage.setItem('isLoggedIn', true);  // Store login status
+                window.location.href = "hacktonypanle.html";  // Redirect to admin page
             } else {
                 alert("Invalid Credentials!");
             }
