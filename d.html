@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Device 1 Details</title>
+    <link rel="stylesheet" href="panel.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 0;
+            background: black;
+            color: lime;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #141414;
+            padding: 10px;
+            z-index: 100;
+        }
+
+        .nav-logo {
+            font-size: 18px;
+            color: #00ff00;
+        }
+
+        .device-details {
+            margin-top: 80px;
+            padding: 20px;
+            background: #333;
+            border-radius: 10px;
+        }
+
+        .device-details h2 {
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .device-section {
+            margin-top: 20px;
+        }
+
+        .device-section h3 {
+            font-size: 18px;
+        }
+
+        .device-section p {
+            font-size: 16px;
+        }
+
+        .device-section .video-box,
+        .device-section .location-box,
+        .device-section .battery-box,
+        .device-section .call-history-box {
+            margin-top: 10px;
+            background: #444;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .back-btn {
+            padding: 10px;
+            background: #00cc00;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 20px 0;
+            display: block;
+            text-align: center;
+            width: 200px;
+        }
+
+        .back-btn:hover {
+            background: #009900;
+        }
+
+        footer {
+            background: #141414;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Animated typing effect for details */
+        .terminal-text {
+            font-size: 1.2em;
+            line-height: 1.5;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 2px solid lime;
+            animation: typing 3s steps(30) 1s forwards, blink 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes blink {
+            50% {
+                border-color: transparent;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-logo">Device 1 Details</div>
+        <ul class="nav-links">
+            <li><a href="panel.html">Back to Panel</a></li>
+        </ul>
+    </nav>
+
+    <div class="device-details">
+        <h2>Device 1 - Detailed View</h2>
+
+        <!-- Video Stream Section -->
+        <div class="device-section">
+            <h3>Live Video Stream</h3>
+            <div class="video-box">
+                <video width="320" height="240" controls autoplay>
+                    <source src="video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+
+        <!-- Location Section -->
+        <div class="device-section">
+            <h3>Location</h3>
+            <div class="location-box">
+                <p>Current Location: <span id="location">Loading...</span></p>
+            </div>
+        </div>
+
+        <!-- Battery Status Section -->
+        <div class="device-section">
+            <h3>Battery Status</h3>
+            <div class="battery-box">
+                <p>Battery Percentage: <span id="battery-status">Loading...</span></p>
+            </div>
+        </div>
+
+        <!-- Call History Section -->
+        <div class="device-section">
+            <h3>Call History</h3>
+            <div class="call-history-box">
+                <ul id="call-history">
+                    <li>Call 1: Incoming - 10 mins</li>
+                    <li>Call 2: Outgoing - 5 mins</li>
+                    <li>Call 3: Missed</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Animation of Permissions -->
+        <div class="device-section">
+            <h3>Device Permissions</h3>
+            <div class="terminal-text">
+                <p>Permissions: Camera, Microphone, Location, Call History, Battery</p>
+            </div>
+        </div>
+
+        <!-- Back Button -->
+        <button class="back-btn" onclick="window.location.href='panel.html'">Back to Panel</button>
+    </div>
+
+    <footer>
+        &copy; Copyright Idura Buddika. All rights reserved.
+    </footer>
+
+    <script>
+        // Simulated device data
+        document.getElementById("location").innerText = "Colombo, Sri Lanka";
+        document.getElementById("battery-status").innerText = "85%";
+
+        // Simulated call history data
+        const callHistory = [
+            { type: 'Incoming', duration: '10 mins' },
+            { type: 'Outgoing', duration: '5 mins' },
+            { type: 'Missed', duration: '' }
+        ];
+
+        const callHistoryList = document.getElementById("call-history");
+        callHistory.forEach(call => {
+            const listItem = document.createElement('li');
+            listItem.innerText = `${call.type} - ${call.duration}`;
+            callHistoryList.appendChild(listItem);
+        });
+    </script>
+</body>
+</html>
